@@ -9,14 +9,16 @@ public class DnsHaluz {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
         java.security.Security.setProperty("networkaddress.cache.ttl", NETWORK_ADDRESS_CACHE_TTL + "");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             try {
+                System.out.println("iteration " + i);
                 System.out.println("getAllByName for " + args[0] + ":");
                 var addresses = InetAddress.getAllByName(args[0]);
                 System.out.println(Arrays.toString(addresses));
-                System.out.println("Addresses for " + args[0] + ":");
+                System.out.println("getByName for " + args[0] + ":");
                 var address = InetAddress.getByName(args[0]);
                 System.out.println(address);
+                System.out.println();
                 Thread.sleep(1000);
             } catch (UnknownHostException | InterruptedException e) {
                 System.err.println(e.getMessage());
